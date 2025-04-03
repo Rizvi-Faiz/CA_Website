@@ -1,30 +1,57 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Example from "./components/navbar";
 import Nav from './components/prenavbar';
 import Carousel from "./components/slider";
 import N from './components/newsletter';
 import Footer from './components/footer';
-import QueryForm from './components/form'; // Import QueryForm page
+import EVisitingCard from './components/EvisitingCard';
+import QueryForm from './components/form';
+import ServicesPage from './components/Services';
+import GSTCalculator from './components/Calculator';
+import BulletinsPage from './components/Bulletins';
+import UtilitiesPage from "./components/Utilities";
+import ActsPage from "./components/Acts";
+import RulesPage from "./components/Rules";
+import FormsPage from "./components/Forms";
+
 
 function App() {
   return (
     <Router>
-      <div className="bg-slate-600">
-        <Nav />
-        <Example />
-        <Routes>
-          <Route path="/" element={
-            <>
-              
-              <Carousel fade />
-              <N />
-            </>
-          } />
-          <Route path="/query" element={<QueryForm />} /> {/* Route for QueryForm */}
-        </Routes>
-        <Footer />
-      </div>
+      <AppContent />
     </Router>
+  );
+}
+
+function AppContent() {
+  const location = useLocation();
+  const isMainRoute = location.pathname === '/';
+  
+  return (
+    <div className="bg-slate-600">
+      {<Nav />}
+      {isMainRoute && <Example />}
+      
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Carousel fade />
+            <N />
+          </>
+        } />
+        <Route path="/query" element={<QueryForm />} /> 
+        <Route path="/services" element={<ServicesPage />} /> 
+        <Route path="/EvisitingCard" element={<EVisitingCard />} /> 
+        <Route path="/Calculator" element={<GSTCalculator />} /> 
+        <Route path="/Bulletins" element={<BulletinsPage />} /> 
+        <Route path="/Utilities" element={<UtilitiesPage />} /> 
+        <Route path="/Acts" element={<ActsPage />} /> 
+        <Route path="/Rules" element={<RulesPage />} /> 
+        <Route path="/Forms" element={<FormsPage />} /> 
+      </Routes>
+      
+      {isMainRoute && <Footer />}
+    </div>
   );
 }
 
