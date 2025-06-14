@@ -56,8 +56,8 @@ const FullScreenCarousel = () => {
     <div className="relative w-full h-96 overflow-hidden">
       {/* Current slide with fade effect */}
       <div 
-        className={`absolute w-full h-full transition-opacity duration-1000 ${
-          fadeState === 'fade-in' ? 'opacity-100' : 'opacity-0'
+        className={`absolute w-full h-full transition-opacity duration-500 ${
+          fadeState === 'fade-in' ? 'animate-smooth-fade-in' : 'opacity-0'
         }`}
       >
         <img
