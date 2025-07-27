@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const ServicesPage = () => {
+  const navigate = useNavigate();
   const [expandedServices, setExpandedServices] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -160,10 +161,9 @@ const ServicesPage = () => {
   };
 
   const handleRequestService = (serviceName) => {
-    
     console.log(`Requesting service: ${serviceName}`);
-    
-    // Implement service request logic here (e.g., open a form, navigate to a page)
+    // Navigate to query page
+    navigate('/query');
   };
 
   const renderIcon = (iconName) => {
@@ -368,9 +368,12 @@ const ServicesPage = () => {
                     <div className="mt-6">
                       <button 
                         onClick={() => handleRequestService(service.name)}
-                        className="inline-flex items-center px-4 py-2 bg-gray-900 text-blue-400 rounded-lg font-medium hover:bg-gray-800 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-300"
+                        className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg font-medium hover:from-blue-700 hover:to-blue-800 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-300 shadow-lg hover:shadow-xl"
                         aria-label={`Request ${service.name} service`}
                       >
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                        </svg>
                         Request Service
                       </button>
                     </div>

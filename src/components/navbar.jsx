@@ -1,39 +1,39 @@
 "use client";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import {
   Dialog,
   DialogPanel,
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  Popover,
-  PopoverButton,
-  PopoverGroup,
-  PopoverPanel,
 } from "@headlessui/react";
 import {
   Bars3Icon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import {
-  ChevronDownIcon,
-  PlayCircleIcon,
-  PhoneIcon,
   HomeIcon,
 } from "@heroicons/react/20/solid";
 
-const callsToAction = [
-  { name: "Calculators", href: "/Calculator", icon: PlayCircleIcon },
-  { name: "Bulletins", href: "/Bulletins", icon: PhoneIcon },
-  { name: "Utilities", href: "/Utilities", icon: PlayCircleIcon },
-  { name: "Acts", href: "/Acts", icon: PhoneIcon },
-  { name: "Rules", href: "/Rules", icon: PlayCircleIcon },
-  { name: "Forms", href: "/Forms", icon: PhoneIcon },
-];
-
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+
+  // Function to handle smooth scrolling to sections
+  const handleScrollToSection = (sectionId) => {
+    // If we're not on the home page, navigate to home first
+    if (location.pathname !== '/') {
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
+    
+    // If we're on the home page, scroll smoothly
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-slate-200 shadow-md">
@@ -54,7 +54,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop navigation - centered */}
-        <PopoverGroup className="hidden lg:flex lg:gap-x-8 justify-center">
+        <div className="hidden lg:flex lg:gap-x-8 justify-center">
           <Link 
             to="/" 
             className="flex items-center px-3 py-2 text-sm font-medium text-gray-900 rounded-md hover:bg-gray-100 transition duration-150 ease-in-out"
@@ -71,44 +71,20 @@ export default function Navbar() {
             Services
           </Link>
 
-          <Popover className="relative">
-            <PopoverButton className="flex items-center gap-x-1 px-3 py-2 text-sm font-medium text-gray-900 rounded-md hover:bg-gray-100 transition duration-150 ease-in-out">
-              Knowledge Bank
-              <ChevronDownIcon
-                aria-hidden="true"
-                className="size-5 flex-none text-gray-500 ml-1"
-              />
-            </PopoverButton>
+          <Link 
+            to="/knowledge-bank" 
+            className="flex items-center px-3 py-2 text-sm font-medium text-gray-900 rounded-md hover:bg-gray-100 transition duration-150 ease-in-out"
+          >
+            Knowledge Bank
+          </Link>
 
-            <PopoverPanel
-              transition
-              className="absolute left-1/2 z-10 mt-3 w-screen max-w-md -translate-x-1/2 transform px-2 sm:px-0"
-            >
-              <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                <div className="relative grid gap-6 bg-white p-6 sm:gap-8 sm:p-8">
-                  {callsToAction.map((item) => (
-                    <Link
-                      key={item.name}
-                      to={item.href}
-                      className="flex items-start rounded-lg p-3 hover:bg-gray-50 transition ease-in-out duration-150"
-                    >
-                      <item.icon className="h-6 w-6 flex-shrink-0 text-blue-600" aria-hidden="true" />
-                      <div className="ml-4">
-                        <p className="text-base font-medium text-gray-900">{item.name}</p>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </PopoverPanel>
-          </Popover>
-
-          <a
-            href="#about" 
+          {/* Fixed About Us with smooth scrolling */}
+          <button
+            onClick={() => handleScrollToSection('about')}
             className="flex items-center px-3 py-2 text-sm font-medium text-gray-900 rounded-md hover:bg-gray-100 transition duration-150 ease-in-out"
           >
             About Us
-          </a>
+          </button>
           
           <Link 
             to="/EVisitingCard" 
@@ -117,12 +93,13 @@ export default function Navbar() {
             E-Visiting Card
           </Link>
           
-          <a
-            href="#news" 
+          {/* Fixed News and Updates with smooth scrolling */}
+          <button
+            onClick={() => handleScrollToSection('news')}
             className="flex items-center px-3 py-2 text-sm font-medium text-gray-900 rounded-md hover:bg-gray-100 transition duration-150 ease-in-out"
           >
             News and Updates
-          </a>
+          </button>
           
           <Link 
             to="/query" 
@@ -130,7 +107,7 @@ export default function Navbar() {
           >
             Query
           </Link>
-        </PopoverGroup>
+        </div>
       </nav>
 
       {/* Mobile menu dialog */}
@@ -175,42 +152,24 @@ export default function Navbar() {
                   Services
                 </Link>
 
-                <Disclosure as="div" className="-mx-3">
-                  {({ open }) => (
-                    <>
-                      <DisclosureButton className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold text-gray-900 hover:bg-gray-50">
-                        Knowledge Bank
-                        <ChevronDownIcon
-                          className={`h-5 w-5 flex-none ${open ? 'rotate-180' : ''}`}
-                          aria-hidden="true"
-                        />
-                      </DisclosureButton>
-                      <DisclosurePanel className="mt-2 space-y-2">
-                        {callsToAction.map((item) => (
-                          <Link
-                            key={item.name}
-                            to={item.href}
-                            className="block rounded-lg py-2 pl-6 pr-3 text-sm font-medium text-gray-900 hover:bg-gray-50"
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            <div className="flex items-center">
-                              <item.icon className="h-5 w-5 mr-2 text-blue-600" aria-hidden="true" />
-                              {item.name}
-                            </div>
-                          </Link>
-                        ))}
-                      </DisclosurePanel>
-                    </>
-                  )}
-                </Disclosure>
-
-                <a
-                  href="#about"
-                  className="block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50 smo"
+                <Link
+                  to="/knowledge-bank"
+                  className="block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50"
                   onClick={() => setMobileMenuOpen(false)}
                 >
+                  Knowledge Bank
+                </Link>
+
+                {/* Fixed About Us for mobile */}
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    handleScrollToSection('about');
+                  }}
+                  className="block w-full text-left rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50"
+                >
                   About Us
-                </a>
+                </button>
                 
                 <Link
                   to="/EVisitingCard"
@@ -220,13 +179,16 @@ export default function Navbar() {
                   E-Visiting Card
                 </Link>
                 
-                <a
-                  href="#news"
-                  className="block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50"
-                  onClick={() => setMobileMenuOpen(false)}
+                {/* Fixed News and Updates for mobile */}
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    handleScrollToSection('news');
+                  }}
+                  className="block w-full text-left rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50"
                 >
                   News and Updates
-                </a>
+                </button>
                 
                 <Link
                   to="/query"

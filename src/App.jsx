@@ -7,6 +7,7 @@ import Footer from './components/footer';
 import EVisitingCard from './components/EvisitingCard';
 import QueryForm from './components/form';
 import ServicesPage from './components/Services';
+import HomeServices from './components/HomeServices'; // New import
 import GSTCalculator from './components/Calculator';
 import BulletinsPage from './components/Bulletins';
 import UtilitiesPage from "./components/Utilities";
@@ -14,6 +15,7 @@ import ActsPage from "./components/Acts";
 import RulesPage from "./components/Rules";
 import AboutPage from "./components/About";
 import FormsPage from "./components/Forms";
+import KnowledgeBankPage from './components/KnowledgeBankPage';
 
 
 function App() {
@@ -37,13 +39,16 @@ function AppContent() {
           <Route path="/" element={
             <>
               <Carousel fade />
+              <HomeServices />
               <N />
+              <Footer />
             </>
           } />
           <Route path="/query" element={<QueryForm />} /> 
           <Route path="/services" element={<ServicesPage />} /> 
           <Route path="/EvisitingCard" element={<EVisitingCard />} /> 
           <Route path="/Calculator" element={<GSTCalculator />} /> 
+          <Route path="/knowledge-bank" element={<KnowledgeBankPage />} />
           <Route path="/Bulletins" element={<BulletinsPage />} /> 
           <Route path="/Utilities" element={<UtilitiesPage />} /> 
           <Route path="/Acts" element={<ActsPage />} /> 
@@ -52,7 +57,6 @@ function AppContent() {
           <Route path="/About" element={<AboutPage />} />
         </Routes>
       </main>
-      {isMainRoute && <Footer />}
     </div>
   );
 }
