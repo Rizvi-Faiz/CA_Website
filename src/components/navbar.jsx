@@ -93,17 +93,22 @@ export default function Navbar() {
             E-Visiting Card
           </Link>
           
-          {/* Fixed News and Updates with smooth scrolling */}
-          <button
-            onClick={() => handleScrollToSection('news')}
+          <Link 
+            to="/news" 
             className="flex items-center px-3 py-2 text-sm font-medium text-gray-900 rounded-md hover:bg-gray-100 transition duration-150 ease-in-out"
           >
             News and Updates
-          </button>
+          </Link>
           
           <Link 
-            to="/query" 
+            to="/tax-deadline-alerts" 
             className="flex items-center px-3 py-2 text-sm font-medium text-gray-900 rounded-md hover:bg-gray-100 transition duration-150 ease-in-out"
+          >
+            Tax Deadlines
+          </Link>
+          <Link 
+            to="/query" 
+            className="flex items-center px-3 py-2 text-sm font-medium rounded-md transition duration-150 ease-in-out bg-blue-500 text-white"
           >
             Query
           </Link>
@@ -179,20 +184,24 @@ export default function Navbar() {
                   E-Visiting Card
                 </Link>
                 
-                {/* Fixed News and Updates for mobile */}
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    handleScrollToSection('news');
-                  }}
-                  className="block w-full text-left rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50"
+                <Link
+                  to="/news"
+                  className="block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   News and Updates
-                </button>
+                </Link>
                 
                 <Link
-                  to="/query"
+                  to="/tax-deadline-alerts"
                   className="block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Tax Deadlines
+                </Link>
+                <Link
+                  to="/query"
+                  className="block rounded-lg px-3 py-2 text-base font-semibold transition duration-150 ease-in-out bg-blue-500 text-white"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Query

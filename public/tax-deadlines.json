@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Advance Tax Payment (1st Installment)",
+    "dueDate": "2025-06-15",
+    "category": "Income Tax"
+  },
+  {
+    "id": 2,
+    "title": "TDS/TCS Payment for May 2025",
+    "dueDate": "2025-06-07",
+    "category": "TDS/TCS"
+  },
+  {
+    "id": 3,
+    "title": "GST Return (GSTR-3B) for May 2025",
+    "dueDate": "2025-06-20",
+    "category": "GST"
+  },
+  {
+    "id": 4,
+    "title": "ITR Filing for FY 2024-25 (Non-Audit)",
+    "dueDate": "2025-07-31",
+    "category": "Income Tax"
+  },
+  {
+    "id": 5,
+    "title": "Advance Tax Payment (2nd Installment)",
+    "dueDate": "2025-09-15",
+    "category": "Income Tax"
+  }
+]

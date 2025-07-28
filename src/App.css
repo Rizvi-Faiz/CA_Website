@@ -1,3 +1,30 @@
 body{
   background-color: slategray;
 }
+
+.news-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.news-article {
+  border-bottom: 1px solid #eee;
+  padding: 20px 0;
+}
+
+.news-article h3 {
+  margin-top: 0;
+}
+
+.news-article a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.article-source {
+  margin-top: 10px;
+  font-style: italic;
+  color: #555;
+}

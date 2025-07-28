@@ -15,7 +15,7 @@ const KnowledgeBankPage = () => {
     {
       name: 'Calculators',
       description: 'Financial and tax calculation tools for quick estimates',
-      path: '/Calculator',
+      path: '/Calculators',
       bgColor: 'bg-blue-100',
       iconColor: 'text-blue-600',
       buttonColor: 'bg-blue-600 hover:bg-blue-700',

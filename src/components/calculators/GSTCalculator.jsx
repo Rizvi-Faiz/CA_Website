@@ -93,32 +93,33 @@ const GSTCalculator = () => {
   };
 
   return (
-    <div className="p-4 bg-gray-100 rounded-lg shadow-md">
-      <div className="text-center mb-4">
-        <h2 className="text-xl font-bold bg-blue-800 text-white py-2 px-4 rounded inline-block">GST Calculator</h2>
+    <div className="bg-white rounded-lg shadow-lg p-6">
+      <div className="text-center mb-6">
+        <h2 className="text-3xl font-bold text-blue-800 mb-2">GST Calculator</h2>
+        <p className="text-gray-600">Calculate GST, CGST, SGST, IGST and Cess for your transactions</p>
       </div>
       
       <div className="overflow-x-auto">
-        <table className="w-full table-auto border-collapse">
+        <table className="w-full table-auto border-collapse border border-gray-300">
           <thead>
-            <tr className="bg-gray-50">
-              <th className="p-2 border text-sm font-medium">Type Of Sale</th>
-              <th className="p-2 border text-sm font-medium">Rate OF Tax</th>
-              <th className="p-2 border text-sm font-medium">Taxable Amount</th>
-              <th className="p-2 border text-sm font-medium">Total Tax Amount</th>
-              <th className="p-2 border text-sm font-medium">IGST</th>
-              <th className="p-2 border text-sm font-medium">CGST</th>
-              <th className="p-2 border text-sm font-medium">SGST</th>
-              <th className="p-2 border text-sm font-medium">Rate of Cess</th>
-              <th className="p-2 border text-sm font-medium">CESS</th>
+            <tr className="bg-blue-50">
+              <th className="p-3 border border-gray-300 text-sm font-semibold text-gray-700">Type Of Sale</th>
+              <th className="p-3 border border-gray-300 text-sm font-semibold text-gray-700">Rate OF Tax</th>
+              <th className="p-3 border border-gray-300 text-sm font-semibold text-gray-700">Taxable Amount</th>
+              <th className="p-3 border border-gray-300 text-sm font-semibold text-gray-700">Total Tax Amount</th>
+              <th className="p-3 border border-gray-300 text-sm font-semibold text-gray-700">IGST</th>
+              <th className="p-3 border border-gray-300 text-sm font-semibold text-gray-700">CGST</th>
+              <th className="p-3 border border-gray-300 text-sm font-semibold text-gray-700">SGST</th>
+              <th className="p-3 border border-gray-300 text-sm font-semibold text-gray-700">Rate of Cess</th>
+              <th className="p-3 border border-gray-300 text-sm font-semibold text-gray-700">CESS</th>
             </tr>
           </thead>
           <tbody>
             {rows.map(row => (
               <tr key={row.id} className="hover:bg-gray-50">
-                <td className="p-1 border">
+                <td className="p-2 border border-gray-300">
                   <select 
-                    className="w-full p-1 border rounded"
+                    className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                     value={row.typeOfSale}
                     onChange={(e) => handleChange(row.id, 'typeOfSale', e.target.value)}
                   >
@@ -127,9 +128,9 @@ const GSTCalculator = () => {
                     ))}
                   </select>
                 </td>
-                <td className="p-1 border">
+                <td className="p-2 border border-gray-300">
                   <select 
-                    className="w-full p-1 border rounded"
+                    className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                     value={row.rateOfTax}
                     onChange={(e) => handleChange(row.id, 'rateOfTax', e.target.value.replace('%', ''))}
                   >
@@ -138,58 +139,60 @@ const GSTCalculator = () => {
                     ))}
                   </select>
                 </td>
-                <td className="p-1 border">
+                <td className="p-2 border border-gray-300">
                   <input 
                     type="number" 
-                    className="w-full p-1 border rounded"
+                    className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                     value={row.taxableAmount}
                     onChange={(e) => handleChange(row.id, 'taxableAmount', e.target.value)}
+                    placeholder="0.00"
                   />
                 </td>
-                <td className="p-1 border">
+                <td className="p-2 border border-gray-300">
                   <input 
                     type="text" 
-                    className="w-full p-1 border rounded bg-gray-100"
+                    className="w-full p-2 border border-gray-300 rounded bg-gray-100"
                     value={row.totalTaxAmount}
                     readOnly
                   />
                 </td>
-                <td className="p-1 border">
+                <td className="p-2 border border-gray-300">
                   <input 
                     type="text" 
-                    className="w-full p-1 border rounded bg-gray-100"
+                    className="w-full p-2 border border-gray-300 rounded bg-gray-100"
                     value={row.igst}
                     readOnly
                   />
                 </td>
-                <td className="p-1 border">
+                <td className="p-2 border border-gray-300">
                   <input 
                     type="text" 
-                    className="w-full p-1 border rounded bg-gray-100"
+                    className="w-full p-2 border border-gray-300 rounded bg-gray-100"
                     value={row.cgst}
                     readOnly
                   />
                 </td>
-                <td className="p-1 border">
+                <td className="p-2 border border-gray-300">
                   <input 
                     type="text" 
-                    className="w-full p-1 border rounded bg-gray-100"
+                    className="w-full p-2 border border-gray-300 rounded bg-gray-100"
                     value={row.sgst}
                     readOnly
                   />
                 </td>
-                <td className="p-1 border">
+                <td className="p-2 border border-gray-300">
                   <input 
                     type="number" 
-                    className="w-full p-1 border rounded"
+                    className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                     value={row.rateOfCess}
                     onChange={(e) => handleChange(row.id, 'rateOfCess', e.target.value)}
+                    placeholder="0"
                   />
                 </td>
-                <td className="p-1 border">
+                <td className="p-2 border border-gray-300">
                   <input 
                     type="text" 
-                    className="w-full p-1 border rounded bg-gray-100"
+                    className="w-full p-2 border border-gray-300 rounded bg-gray-100"
                     value={row.cess}
                     readOnly
                   />
@@ -200,21 +203,43 @@ const GSTCalculator = () => {
         </table>
       </div>
       
-      <div className="grid grid-cols-6 gap-4 mt-4">
-        <div className="col-span-1">Total Amount: <span className="font-bold">{totals.totalAmount.toFixed(2)}</span></div>
-        <div className="col-span-1">Total Tax: <span className="font-bold">{totals.totalTax.toFixed(2)}</span></div>
-        <div className="col-span-1">Total IGST: <span className="font-bold">{totals.totalIGST.toFixed(2)}</span></div>
-        <div className="col-span-1">Total CGST: <span className="font-bold">{totals.totalCGST.toFixed(2)}</span></div>
-        <div className="col-span-1">Total SGST: <span className="font-bold">{totals.totalSGST.toFixed(2)}</span></div>
-        <div className="col-span-1">Total CESS: <span className="font-bold">{totals.totalCESS.toFixed(2)}</span></div>
+      <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mt-6 p-4 bg-gray-50 rounded-lg">
+        <div className="text-center">
+          <div className="text-sm text-gray-600">Total Amount</div>
+          <div className="text-lg font-bold text-gray-800">₹{totals.totalAmount.toFixed(2)}</div>
+        </div>
+        <div className="text-center">
+          <div className="text-sm text-gray-600">Total Tax</div>
+          <div className="text-lg font-bold text-gray-800">₹{totals.totalTax.toFixed(2)}</div>
+        </div>
+        <div className="text-center">
+          <div className="text-sm text-gray-600">Total IGST</div>
+          <div className="text-lg font-bold text-gray-800">₹{totals.totalIGST.toFixed(2)}</div>
+        </div>
+        <div className="text-center">
+          <div className="text-sm text-gray-600">Total CGST</div>
+          <div className="text-lg font-bold text-gray-800">₹{totals.totalCGST.toFixed(2)}</div>
+        </div>
+        <div className="text-center">
+          <div className="text-sm text-gray-600">Total SGST</div>
+          <div className="text-lg font-bold text-gray-800">₹{totals.totalSGST.toFixed(2)}</div>
+        </div>
+        <div className="text-center">
+          <div className="text-sm text-gray-600">Total CESS</div>
+          <div className="text-lg font-bold text-gray-800">₹{totals.totalCESS.toFixed(2)}</div>
+        </div>
       </div>
       
-      <div className="text-right mt-4">
+      <div className="flex justify-between items-center mt-6">
+        <div className="text-sm text-gray-600">
+          <p>• Inter State Sale: IGST applicable</p>
+          <p>• Intra State Sale: CGST + SGST applicable</p>
+        </div>
         <button 
-          className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded"
+          className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-lg font-medium transition-colors"
           onClick={handleReset}
         >
-          Reset
+          Reset All
         </button>
       </div>
     </div>
