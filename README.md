@@ -58,7 +58,7 @@ Before you begin, ensure you have the following installed:
     ```
 
 3.  **Create a local environment file for the backend:**
-    Create a file named `.env` in the root directory of your project (`CA_Website/.env`).
+    Create a file named `.env` in the **root directory** of your project (`CA_Website/.env`).
     Add your Firebase Service Account Key to this file. **Replace the placeholder with the actual content of your JSON key file.**
     ```
     FIREBASE_SERVICE_ACCOUNT_KEY='{"type": "service_account", "project_id": "your-project-id", "private_key_id": "...", "private_key": "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n", "client_email": "...", "client_id": "...", "auth_uri": "...", "token_uri": "...", "auth_provider_x509_cert_url": "...", "client_x509_cert_url": "...", "universe_domain": "..."}'
@@ -70,13 +70,14 @@ Before you begin, ensure you have the following installed:
 To run the application locally, you need to start both the frontend and the Vercel Serverless Function emulator.
 
 1.  **Start the Frontend Application:**
+    Open a terminal in the root directory of your project (`CA_Website`).
     ```bash
     npm start
     ```
     This will typically open your application in your browser at `http://localhost:3000`.
 
 2.  **Start the Vercel Serverless Function Locally:**
-    Open a **new terminal** in the root directory of your project (`CA_Website`).
+    Open a **separate new terminal** in the root directory of your project (`CA_Website`).
     ```bash
     vercel dev
     ```
