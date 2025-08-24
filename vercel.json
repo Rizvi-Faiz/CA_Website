@@ -18,11 +18,7 @@
   },
   "rewrites": [
     {
-      "source": "/api/news/:path*",
-      "destination": "/api/news"
-    },
-    {
-      "source": "/api/news",
+      "source": "/api/news/(.*)",
       "destination": "/api/news"
     },
     {
