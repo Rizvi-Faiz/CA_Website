@@ -20,7 +20,7 @@ app.use(cors()); // Allow all origins for development, restrict in production
 app.use(express.json());
 
 // GET all news
-app.get('/api/news', async (req, res) => {
+app.get('/', async (req, res) => {
   try {
     const snapshot = await newsCollection.orderBy('date', 'desc').get();
     const news = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
@@ -32,7 +32,7 @@ app.get('/api/news', async (req, res) => {
 });
 
 // POST a new news item
-app.post('/api/news', async (req, res) => {
+app.post('/', async (req, res) => {
   try {
     const newNewsItem = {
       title: req.body.title,
@@ -49,7 +49,7 @@ app.post('/api/news', async (req, res) => {
 });
 
 // PUT (update) a news item
-app.put('/api/news/:id', async (req, res) => {
+app.put('/:id', async (req, res) => {
   try {
     const newsId = req.params.id;
     const updatedData = {
@@ -67,7 +67,7 @@ app.put('/api/news/:id', async (req, res) => {
 });
 
 // DELETE a news item
-app.delete('/api/news/:id', async (req, res) => {
+app.delete('/:id', async (req, res) => {
   try {
     const newsId = req.params.id;
     await newsCollection.doc(newsId).delete();
