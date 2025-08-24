@@ -18,6 +18,7 @@ import FormsPage from "./components/Forms";
 import KnowledgeBankPage from './components/KnowledgeBankPage';
 import TaxDeadlineAlerts from './components/TaxDeadlineAlerts';
 import NewsPage from './components/NewsPage';
+import AdminNews from './components/AdminNews'; // Import AdminNews component
 import FloatingQueryButton from './components/FloatingQueryButton';
 
 
@@ -61,6 +62,7 @@ function AppContent() {
           <Route path="/About" element={<AboutPage />} />
           <Route path="/tax-deadline-alerts" element={<TaxDeadlineAlerts />} />
           <Route path="/news" element={<NewsPage />} />
+          <Route path="/admin/news" element={<AdminNews />} /> {/* Admin News Route */}
         </Routes>
       </main>
     </div>
