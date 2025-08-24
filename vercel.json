@@ -11,11 +11,6 @@
       "config": { "includeFiles": ["api/**", ".env"] }
     }
   ],
-  "functions": {
-    "api/news.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
   "rewrites": [
     {
       "source": "/api/news/(.*)",
