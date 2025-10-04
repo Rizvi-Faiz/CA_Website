@@ -6,14 +6,14 @@
       "config": { "outputDirectory": "build" }
     },
     {
-      "src": "api/index.js",
+      "src": "api/news.js",
       "use": "@vercel/node"
     }
   ],
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/index.js"
+      "source": "/api/news",
+      "destination": "/api/news.js"
     },
     {
       "source": "/((?!api/).*)",
