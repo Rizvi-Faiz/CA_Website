@@ -6,12 +6,17 @@ const cors = require('cors');
 // Initialize Firebase Admin SDK
 // Vercel will provide FIREBASE_SERVICE_ACCOUNT_KEY as an environment variable
 if (!admin.apps.length) {
-  const serviceAccount = JSON.parse(
-    Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT_KEY, 'base64').toString('utf8')
-  );
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
-  });
+  if (process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
+    console.log('FIREBASE_SERVICE_ACCOUNT_KEY environment variable found.');
+    const serviceAccount = JSON.parse(
+      Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT_KEY, 'base64').toString('utf8')
+    );
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount)
+    });
+  } else {
+    console.error('FIREBASE_SERVICE_ACCOUNT_KEY environment variable not found.');
+  }
 }
 
 const db = admin.firestore();
