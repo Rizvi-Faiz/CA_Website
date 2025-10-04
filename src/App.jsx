@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Example from "./components/navbar";
 import Nav from './components/prenavbar';
 import Carousel from "./components/slider";
@@ -31,8 +31,6 @@ function App() {
 }
 
 function AppContent() {
-  const location = useLocation();
-  const isMainRoute = location.pathname === '/';
   
   return (
     <div className="bg-slate-600">

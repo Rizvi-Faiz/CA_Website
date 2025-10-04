@@ -1,5 +1,5 @@
 import React from 'react';
-import { Facebook, Instagram, LinkedIn, Twitter, Mail, MapPin, Phone, FacebookIcon, InstagramIcon, Linkedin } from 'lucide-react';
+import { Twitter, Mail, MapPin, Phone, FacebookIcon, InstagramIcon, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   const services = [
@@ -149,13 +149,13 @@ const Footer = () => {
               © {new Date().getFullYear()} CA Services. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              <a href="#" className="text-gray-500 hover:text-blue-400 text-sm">
+              <a href="/privacy-policy" className="text-gray-500 hover:text-blue-400 text-sm">
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-500 hover:text-blue-400 text-sm">
+              <a href="/terms-of-service" className="text-gray-500 hover:text-blue-400 text-sm">
                 Terms of Service
               </a>
-              <a href="#" className="text-gray-500 hover:text-blue-400 text-sm">
+              <a href="/disclaimer" className="text-gray-500 hover:text-blue-400 text-sm">
                 Disclaimer
               </a>
             </div>

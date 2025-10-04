@@ -71,7 +71,6 @@ const TDSCalculator = () => {
 
     // Calculate TDS
     let tdsAmount = 0;
-    let taxableAmount = amount;
 
     if (amount > applicableThreshold) {
       if (formData.incomeType === 'salary') {
