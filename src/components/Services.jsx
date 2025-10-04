@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -8,7 +8,7 @@ const ServicesPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
 
-  const products = [
+  const products = useMemo(() => [
     { name: 'Value Added Tax (VAT)', description: 'Expert assistance with VAT compliance and planning', icon: 'calculator', 
       details: [
         'VAT registration and filing assistance',
@@ -117,7 +117,7 @@ const ServicesPage = () => {
         'GST refund management'
       ]
     }
-  ];
+  ], []); // Empty dependency array means this memoized value will only be created once
 
   // Filter products based on search query and auto-expand matching services
   useEffect(() => {
@@ -145,12 +145,12 @@ const ServicesPage = () => {
       setFilteredProducts(filtered);
       setExpandedServices(expandIndexes);
     }
-  }, [searchQuery]);
+  }, [searchQuery, products]);
 
   // Initialize filtered products with all products
   useEffect(() => {
     setFilteredProducts(products);
-  }, []);
+  }, [products]);
 
   const toggleExpand = (index) => {
     setExpandedServices(prev => 
