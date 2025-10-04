@@ -4,8 +4,11 @@ const express = require('express');
 const cors = require('cors');
 
 // Initialize Firebase Admin SDK
+// Vercel will provide FIREBASE_SERVICE_ACCOUNT_KEY as an environment variable
 if (!admin.apps.length) {
-  const serviceAccount = require('../server/ca-website-5abcc-firebase-adminsdk-fbsvc-903c22eed6.json');
+  const serviceAccount = JSON.parse(
+    Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT_KEY, 'base64').toString('utf8')
+  );
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
   });
