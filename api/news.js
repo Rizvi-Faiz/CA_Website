@@ -1,4 +1,3 @@
-require('dotenv').config(); // For local development, Vercel handles env vars automatically
 const admin = require('firebase-admin');
 const express = require('express');
 const cors = require('cors');
