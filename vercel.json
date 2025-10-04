@@ -13,7 +13,7 @@
   ],
   "rewrites": [
     {
-      "source": "/api/news",
+      "source": "/api/(.*)",
       "destination": "/api/news.js"
     },
     {
